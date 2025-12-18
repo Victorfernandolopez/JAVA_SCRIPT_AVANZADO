@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejecicio - Aceceso avanzado del Js al Dom</title>
+    <style>
+        .azul {
+            background-color: cyan;
+            color: purple;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+
+    <H1 class="Titulo">Js Av. Clase 2</H1>
+
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+
+    </ul>
+
+    <script>
+        /*------------------------------------------*/
+        /*acceso al h1 (elemento de titulo)*/
+        const titulo = document.querySelector("h1")
+        //titulo.innerText = 'titulo creado desde JS'//
+        titulo.innerHTML = 'titulo creado desde <a href = "#">JS</a>'
+        console.log(titulo.innerText)
+        console.log(titulo.innerHTML)
+
+        //inyectar clase de forma dinamica
+        titulo.classList.add('azul')
+        titulo.classList.remove('azul')
+
+        titulo.id = 'titulo' 
+        console.log(titulo.id)
+
+        /*------------------------------------------*/
+        /*acceso a la lista desordenada (ul)*/
+
+        const items = document.querySelectorAll('li')
+
+        const colores = ['red','blue','green', '#ff8000', 'rgb(225,0,225)']
+
+        for(let i=0; i<items.length; i++) {
+            items[i].innerHTML = `Elemento Nro. ${i+1}`
+            items[i].style.color = colores[i]
+            items[i].style.backgroundColor = i%2 == 0? 'whithe' : '#111'
+        }
+
+        /*------------------------------------------*/
+        /*Creacion de un elemento de parrafo*/
+
+        const parrafo = document.createElement('p')
+        parrafo.innerText = 'Hola soy un parrafo'
+        parrafo.style.color = 'green'
+        document.body.appendChild(parrafo)
+
+        /*------------------------------------------*/
+        /*Acceso al elemento de titulo*/
+
+        document.querySelector('title').innerText = 'titulo cambio'
+        document.getElementsByTagName('title')[0].innerText
+        document.getElementsByTagName('title')[0].textContent
+        document.querySelector('title').innerText = 'titulo cambio'
+
+
+    </script>
+    
+</body>
+</html>
